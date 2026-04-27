@@ -1,56 +1,51 @@
 import { create } from 'zustand';
 import api from '../services/api';
+
+const SAMPLE_USER = {
+  id: 'sample-user-id',
+  email: 'sample@nutrisense.com',
+  fullName: 'Sample User',
+  isOnboarded: true,
+  healthGoal: 'Lose weight',
+  activityLevel: 'Moderate',
+  dietaryPreference: 'None'
+};
+
 const useAuthStore = create((set, get) => ({
-  user: null,
-  isAuthenticated: false,
-  isLoading: true,
+  user: SAMPLE_USER,
+  isAuthenticated: true,
+  isLoading: false, // Set to false since we are skipping initialization
   initialize: async () => {
-    const token = localStorage.getItem('accessToken');
-    if (!token) {
-      set({ isLoading: false });
-      return;
-    }
-    try {
-      const { data } = await api.get('/auth/me');
-      set({ user: data, isAuthenticated: true, isLoading: false });
-    } catch {
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('refreshToken');
-      set({ user: null, isAuthenticated: false, isLoading: false });
-    }
+    // We can keep this empty or just let it be. 
+    // To be safe, we'll just keep the sample user.
+    set({ user: SAMPLE_USER, isAuthenticated: true, isLoading: false });
   },
   login: async (email, password) => {
-    const { data } = await api.post('/auth/login', { email, password });
-    localStorage.setItem('accessToken', data.accessToken);
-    localStorage.setItem('refreshToken', data.refreshToken);
-    set({ user: data.user, isAuthenticated: true });
-    return data.user;
+    // Mock login
+    set({ user: SAMPLE_USER, isAuthenticated: true });
+    return SAMPLE_USER;
   },
   register: async (email, password, fullName) => {
-    const { data } = await api.post('/auth/register', { email, password, fullName });
-    localStorage.setItem('accessToken', data.accessToken);
-    localStorage.setItem('refreshToken', data.refreshToken);
-    set({ user: data.user, isAuthenticated: true });
-    return data.user;
+    // Mock register
+    set({ user: SAMPLE_USER, isAuthenticated: true });
+    return SAMPLE_USER;
   },
   googleLogin: async (credential) => {
-    const { data } = await api.post('/auth/google', { credential });
-    localStorage.setItem('accessToken', data.accessToken);
-    localStorage.setItem('refreshToken', data.refreshToken);
-    set({ user: data.user, isAuthenticated: true });
-    return data.user;
+    // Mock google login
+    set({ user: SAMPLE_USER, isAuthenticated: true });
+    return SAMPLE_USER;
   },
   logout: async () => {
-    try {
-      const refreshToken = localStorage.getItem('refreshToken');
-      await api.post('/auth/logout', { refreshToken });
-    } catch {  }
+    // For sample user, we don't really want to logout, 
+    // but we can just reset to sample user or do nothing.
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    set({ user: null, isAuthenticated: false });
+    // set({ user: null, isAuthenticated: false }); // Don't actually logout
   },
   updateUser: (userData) => {
     set({ user: { ...get().user, ...userData } });
   },
 }));
+
 export default useAuthStore;
+
