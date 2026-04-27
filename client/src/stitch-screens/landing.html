@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NutriSense - Eat Smart. Live Better.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#bbcbbb",
+                        "surface-bright": "#f3fcf1",
+                        "on-surface": "#161d17",
+                        "tertiary": "#98472a",
+                        "on-surface-variant": "#3d4a3e",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "secondary": "#006397",
+                        "on-primary-container": "#005027",
+                        "primary-fixed-dim": "#4ae183",
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#390c00",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#ebf3e8",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#92ccff",
+                        "on-primary-fixed": "#00210c",
+                        "primary": "#006d37",
+                        "on-secondary-container": "#00476e",
+                        "outline": "#6c7b6d",
+                        "inverse-surface": "#2b322b",
+                        "primary-container": "#2ecc71",
+                        "surface-container": "#e8f0e5",
+                        "background": "#f3fcf1",
+                        "surface": "#f3fcf1",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#ff9875",
+                        "secondary-container": "#5cb8fd",
+                        "surface-container-low": "#eef6eb",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "on-background": "#161d17",
+                        "inverse-primary": "#4ae183",
+                        "on-secondary-fixed-variant": "#004b73",
+                        "surface-tint": "#006d37",
+                        "on-primary-fixed-variant": "#005228",
+                        "on-secondary-fixed": "#001d31",
+                        "surface-container-highest": "#dce5da",
+                        "on-tertiary-fixed-variant": "#793015",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#6bfe9c",
+                        "surface-variant": "#dce5da",
+                        "surface-dim": "#d4dcd2",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e2ebe0",
+                        "on-tertiary-container": "#772e14",
+                        "secondary-fixed": "#cce5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "container-max-width": "1280px",
+                        "gutter": "24px",
+                        "stack-sm": "8px",
+                        "margin": "32px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "label-lg": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- Top Navigation (Suppressed for Landing Page, typically considered linear/transactional entry point, but we'll include a simplified brand header based on constraints) -->
+<header class="w-full fixed top-0 left-0 z-50 bg-surface/80 backdrop-blur-md border-b border-surface-variant">
+<div class="max-w-[1280px] mx-auto px-6 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-headline-md text-headline-md text-primary tracking-tight">NutriSense</span>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#features">Features</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#how-it-works">How it Works</a>
+<a class="font-label-lg text-label-lg text-primary border border-primary rounded-lg px-4 py-2 hover:bg-primary-container/10 transition-colors" href="#">Sign In</a>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-16">
+<!-- Hero Section -->
+<section class="relative pt-24 pb-32 px-6 lg:pt-36 lg:pb-40 overflow-hidden">
+<div class="max-w-[1280px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-8 z-10">
+<h1 class="font-display-lg text-display-lg text-on-background">
+                        Eat Smart. <br/>
+<span class="text-primary">Live Better.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Discover a sustainable approach to nutrition. NutriSense combines smart tracking, personalized insights, and gentle encouragement to help you build lasting healthy habits without the stress.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary font-label-lg text-label-lg px-8 py-4 rounded-lg shadow-sm hover:bg-surface-tint transition-colors">
+                            Get Started
+                        </button>
+<button class="bg-transparent border-2 border-secondary text-secondary font-label-lg text-label-lg px-8 py-4 rounded-lg hover:bg-secondary/5 transition-colors">
+                            Sign In
+                        </button>
+</div>
+</div>
+<div class="relative z-10 w-full aspect-square md:aspect-[4/3] lg:aspect-square rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(44,62,80,0.08)] border border-surface-variant bg-surface-container-lowest">
+<img alt="Hero Image" class="w-full h-full object-cover" data-alt="Overhead view of a vibrant, healthy meal bowl with fresh greens, avocado, and seeds on a clean white marble countertop with natural sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJmDPkKv5v0tyd5_q5VcUJ_O9xWBAEz1ptgJHcRXBQmlBNZ9NIyA-1o459u30emQRUbuoM9jXgKH-KFr7GKflD4HRkMyQRjqc0xFjLyWYzMS59VRj_yDVgVrEZ2KMHdOu5kOL2we3PXuQ6SO3jpvbwSI6QoN5otOquJjKBX1y-CjjXOK3er3MhDcLMHHYuUkliJlEY3dSfg32uXfYq1D6Is2gAw0Po70GMCh2ZyPGU2Rb6oBD_yys4OD5b7uHl3h1iBZvS5K7b9g-I"/>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute top-0 right-0 -mr-32 -mt-32 w-[600px] h-[600px] bg-primary-container/20 rounded-full blur-[100px] z-0 pointer-events-none"></div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-24 bg-surface-container-lowest px-6" id="features">
+<div class="max-w-[1280px] mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-4">Everything you need to succeed</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Our comprehensive toolkit is designed to make nutrition tracking intuitive and actionable.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Feature 1 -->
+<div class="bg-surface rounded-xl p-8 border border-surface-variant shadow-[0_4px_20px_rgba(44,62,80,0.08)] flex flex-col gap-4 transition-transform hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-lg">AI Meal Suggestions</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Get personalized recipes based on your macros, preferences, and what's currently in your fridge.</p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface rounded-xl p-8 border border-surface-variant shadow-[0_4px_20px_rgba(44,62,80,0.08)] flex flex-col gap-4 transition-transform hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-secondary text-2xl" style="font-variation-settings: 'FILL' 1;">track_changes</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-lg">Calorie Tracking</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Effortlessly log meals with our extensive database and barcode scanner for accurate macro counting.</p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface rounded-xl p-8 border border-surface-variant shadow-[0_4px_20px_rgba(44,62,80,0.08)] flex flex-col gap-4 transition-transform hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-tertiary text-2xl" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-lg">Habit Streaks</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Stay motivated by building streaks for daily logging, hydration, and hitting your macro targets.</p>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface rounded-xl p-8 border border-surface-variant shadow-[0_4px_20px_rgba(44,62,80,0.08)] flex flex-col gap-4 transition-transform hover:-translate-y-1">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center mb-2">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-background text-lg">Smart Grocery List</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Automatically generate categorized shopping lists based on your planned meals for the week.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Section -->
+<section class="py-24 px-6 bg-surface" id="how-it-works">
+<div class="max-w-[1280px] mx-auto">
+<div class="text-center mb-20">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-4">Simple, powerful workflow</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">Three steps to a healthier relationship with your food.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+<!-- Connecting Line (Desktop) -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-surface-variant -translate-y-1/2 z-0"></div>
+<!-- Step 1 -->
+<div class="relative z-10 flex flex-col items-center text-center gap-6 bg-surface p-6 rounded-xl">
+<div class="w-20 h-20 rounded-full bg-surface-container-highest border-4 border-surface flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl">restaurant</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background text-xl mb-2">1. Log</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Quickly input your meals using our intuitive search or barcode scanner.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative z-10 flex flex-col items-center text-center gap-6 bg-surface p-6 rounded-xl">
+<div class="w-20 h-20 rounded-full bg-primary-container/20 border-4 border-surface flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-primary text-4xl">analytics</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background text-xl mb-2">2. Analyze</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Review your daily macro breakdown and identify nutritional gaps instantly.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative z-10 flex flex-col items-center text-center gap-6 bg-surface p-6 rounded-xl">
+<div class="w-20 h-20 rounded-full bg-secondary-container/20 border-4 border-surface flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-secondary text-4xl">trending_up</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-background text-xl mb-2">3. Improve</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Receive actionable tips and adjust your habits based on data-driven insights.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-surface-container-low px-6">
+<div class="max-w-[1280px] mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-center text-on-background mb-16">Stories from our community</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Quote 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-variant shadow-[0_4px_20px_rgba(44,62,80,0.08)]">
+<span class="material-symbols-outlined text-primary/30 text-4xl mb-4">format_quote</span>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 italic">"NutriSense completely changed how I view my diet. It's not about restriction anymore; it's about making informed, sustainable choices every day."</p>
+<div class="flex items-center gap-4 mt-auto">
+<img alt="Sarah J." class="w-12 h-12 rounded-full object-cover border border-surface-variant" data-alt="Portrait of a smiling young woman with short brown hair wearing a casual white shirt against a softly blurred park background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDncigxPjuMkfUUqog-dW2wMpWmnr-iyWTdOx3R6V7CuoN-pHM8q5c8ZnnH8DXkV7_gFWYxC7yDpiTIVf12LmRllHpMzJC0g7BsRsFY7yuzYPmxzg2mnRWK5WSfnr61-6Xz3PnwpzgqROq5M4Qnm07oAl0cTY11e9w6-85-1jm8ww_S8gSQ1trPjw10hGlptkLhYN9UAepZx5TfbWxNSz-G1iarUymFdTjlWmcH5OGkQMBbCoq0M9fKQyWkl0woNKxvmomBwA9zWdAK"/>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-background">Sarah J.</h4>
+<span class="font-label-md text-label-md text-on-surface-variant">Lost 15 lbs</span>
+</div>
+</div>
+</div>
+<!-- Quote 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-variant shadow-[0_4px_20px_rgba(44,62,80,0.08)]">
+<span class="material-symbols-outlined text-primary/30 text-4xl mb-4">format_quote</span>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 italic">"The AI meal suggestions are a game-changer. It takes the guesswork out of dinner planning and ensures I always hit my protein goals."</p>
+<div class="flex items-center gap-4 mt-auto">
+<img alt="Michael T." class="w-12 h-12 rounded-full object-cover border border-surface-variant" data-alt="Portrait of a smiling man in his 30s with a neat beard wearing a dark blue t-shirt outdoors in soft natural light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNCDT3M_E-VeNG-H_fVT3MH2bQwHRZW_Ur0XdckkgyXJXZcTYhopDwaWCugd57cN_Fex6Wm0wsbQ-ZTvBnwepLz8r80YY5pXvavqDjRbZ4yRu3on7ay4sr7REFUJKF8xJDlGdBqXxBMXDVOi9sl-mDIxwNecW0-7GWQwzQcatl08nA9aFPQChsAALFqu5fZFMJUk4YZ34-PVUEfdubEalAxxJX_CmZO9SfTr8SCP8gkqVMzWZyC8tQ0aOr1XtTzER3B059VzywLc5P"/>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-background">Michael T.</h4>
+<span class="font-label-md text-label-md text-on-surface-variant">Marathon Runner</span>
+</div>
+</div>
+</div>
+<!-- Quote 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-8 border border-surface-variant shadow-[0_4px_20px_rgba(44,62,80,0.08)]">
+<span class="material-symbols-outlined text-primary/30 text-4xl mb-4">format_quote</span>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 italic">"Cleanest interface of any tracking app I've used. The gentle nudges keep me on track without feeling overly punitive when I slip up."</p>
+<div class="flex items-center gap-4 mt-auto">
+<img alt="Elena R." class="w-12 h-12 rounded-full object-cover border border-surface-variant" data-alt="Close-up portrait of a woman with curly hair smiling gently looking directly at camera with warm indoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBg-6rldHUrw2SfPZZzZDuSjv-EeAtboAp0r71HOFgU0Pi_15sLcelbzwIONtkGfiiBYihcrDmOHoVstuuNSC_U4rZNGaiyzQBNbblqnDTvVWFC-_NhKW2-M7lZ8LsU9OqT3gEm8qeJVsL552LnNA2WozpaDv53sE0wT32If24_KYRUoDzwNdt-oYbDEGqVT-EPgCzMdkfLWWcbbA96f9YB3dgYTFZuiMJkwcXb11-D7ucI4QYhZsmv5C8h3WX6Ab5U4FItsjpCnNNV"/>
+<div>
+<h4 class="font-label-lg text-label-lg text-on-background">Elena R.</h4>
+<span class="font-label-md text-label-md text-on-surface-variant">Maintains Balance</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container py-12 px-6 border-t border-surface-variant mt-auto">
+<div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">eco</span>
+<span class="font-headline-md text-headline-md text-on-background tracking-tight text-xl">NutriSense</span>
+</div>
+<nav class="flex gap-8">
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#">About</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#">Terms</a>
+<a class="font-label-lg text-label-lg text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">
+                © 2024 NutriSense. All rights reserved.
+            </p>
+</div>
+</footer>
+</body></html>

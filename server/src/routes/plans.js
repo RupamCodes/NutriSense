@@ -1,0 +1,11 @@
+const express = require('express');
+const authenticate = require('../middleware/auth');
+const { getCurrentPlan, createPlan, upsertPlanEntry, deletePlanEntry, getShoppingList } = require('../controllers/plans.controller');
+const router = express.Router();
+router.use(authenticate);
+router.get('/current', getCurrentPlan);
+router.post('/', createPlan);
+router.put('/:id/entry', upsertPlanEntry);
+router.delete('/:id/entry/:entryId', deletePlanEntry);
+router.get('/:id/shopping-list', getShoppingList);
+module.exports = router;

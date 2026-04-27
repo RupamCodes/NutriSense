@@ -1,0 +1,10 @@
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/auth.middleware');
+const ctrl = require('../controllers/auth.controller');
+router.post('/register', ctrl.register);
+router.post('/login', ctrl.login);
+router.post('/refresh', ctrl.refreshToken);
+router.post('/logout', ctrl.logout);
+router.post('/google', ctrl.googleAuth);
+router.get('/me', requireAuth, ctrl.getMe);
+module.exports = router;

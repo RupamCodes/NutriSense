@@ -1,0 +1,12 @@
+const express = require('express');
+const authenticate = require('../middleware/auth');
+const { getMe, updateProfile, updateAvatar, updatePreferences } = require('../controllers/user.controller');
+const router = express.Router();
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+router.use(authenticate);
+router.get('/me', getMe);
+router.put('/profile', updateProfile);
+router.post('/avatar', upload.single('avatar'), updateAvatar);
+router.put('/preferences', updatePreferences);
+module.exports = router;

@@ -1,0 +1,13 @@
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/auth.middleware');
+const ctrl = require('../controllers/shopping.controller');
+router.post('/', requireAuth, ctrl.createList);
+router.get('/', requireAuth, ctrl.getLists);
+router.get('/:id', requireAuth, ctrl.getListById);
+router.put('/:id', requireAuth, ctrl.updateList);
+router.delete('/:id', requireAuth, ctrl.deleteList);
+router.post('/:id/items', requireAuth, ctrl.addItem);
+router.patch('/:id/items/:itemId/toggle', requireAuth, ctrl.toggleItem);
+router.delete('/:id/items/:itemId', requireAuth, ctrl.deleteItem);
+router.post('/from-plan/:planId', requireAuth, ctrl.generateFromMealPlan);
+module.exports = router;

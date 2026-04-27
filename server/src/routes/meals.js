@@ -1,0 +1,11 @@
+const express = require('express');
+const authenticate = require('../middleware/auth');
+const { getTodayMeals, getMealsByDateRange, logMeal, deleteMeal, getMealsSummary } = require('../controllers/meals.controller');
+const router = express.Router();
+router.use(authenticate);
+router.get('/today', getTodayMeals);
+router.get('/', getMealsByDateRange);
+router.post('/log', logMeal);
+router.delete('/:id', deleteMeal);
+router.get('/summary', getMealsSummary);
+module.exports = router;

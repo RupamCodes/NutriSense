@@ -1,0 +1,10 @@
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/auth.middleware');
+const ctrl = require('../controllers/user.controller');
+router.get('/profile', requireAuth, ctrl.getProfile);
+router.put('/profile', requireAuth, ctrl.updateProfile);
+router.put('/onboarding', requireAuth, ctrl.completeOnboarding);
+router.get('/goals', requireAuth, ctrl.getGoals);
+router.put('/goals', requireAuth, ctrl.updateGoals);
+router.delete('/account', requireAuth, ctrl.deleteAccount);
+module.exports = router;

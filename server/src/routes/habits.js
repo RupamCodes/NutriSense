@@ -1,0 +1,12 @@
+const express = require('express');
+const authenticate = require('../middleware/auth');
+const { getHabits, createHabit, updateHabit, deleteHabit, completeHabit, getStreaks } = require('../controllers/habits.controller');
+const router = express.Router();
+router.use(authenticate);
+router.get('/', getHabits);
+router.post('/', createHabit);
+router.put('/:id', updateHabit);
+router.delete('/:id', deleteHabit);
+router.post('/:id/complete', completeHabit);
+router.get('/streaks', getStreaks);
+module.exports = router;

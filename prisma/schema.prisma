@@ -1,0 +1,147 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ActivityLevel {
+  SEDENTARY
+  LIGHT
+  MODERATE
+  ACTIVE
+  VERY_ACTIVE
+}
+
+enum GoalType {
+  LOSE_WEIGHT
+  GAIN_MUSCLE
+  EAT_HEALTHIER
+  MAINTAIN
+  MANAGE_CONDITION
+}
+
+enum MealType {
+  BREAKFAST
+  LUNCH
+  DINNER
+  SNACK
+}
+
+enum FoodSource {
+  NUTRITIONIX
+  OPEN_FOOD_FACTS
+  CUSTOM
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  passwordHash String?
+  googleId     String?   @unique
+  avatarUrl    String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  profile      UserProfile?
+  mealLogs     MealLog[]
+  habits       Habit[]
+  mealPlans    MealPlan[]
+  waterLogs    WaterLog[]
+}
+
+model UserProfile {
+  id                 String        @id @default(cuid())
+  userId             String        @unique
+  user               User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  age                Int
+  gender             String
+  heightCm           Float
+  weightKg           Float
+  activityLevel      ActivityLevel
+  goal               GoalType
+  dietaryPreferences String[]
+  allergies          String[]
+  dailyCalorieTarget Int
+  dailyWaterTarget   Int           @default(8)
+}
+
+model Food {
+  id           String     @id @default(cuid())
+  name         String
+  brand        String?
+  servingSize  Float
+  servingUnit  String
+  calories     Float
+  protein      Float
+  carbs        Float
+  fat          Float
+  fiber        Float?
+  sugar        Float?
+  sodium       Float?
+  vitamins     Json?
+  minerals     Json?
+  source       FoodSource @default(CUSTOM)
+  externalId   String?
+  mealLogs     MealLog[]
+  mealPlanEntries MealPlanEntry[]
+}
+
+model MealLog {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  foodId          String
+  food            Food     @relation(fields: [foodId], references: [id])
+  mealType        MealType
+  servingQuantity Float
+  loggedAt        DateTime @default(now())
+}
+
+model MealPlan {
+  id            String          @id @default(cuid())
+  userId        String
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  weekStartDate DateTime
+  entries       MealPlanEntry[]
+  createdAt     DateTime        @default(now())
+}
+
+model MealPlanEntry {
+  id              String   @id @default(cuid())
+  mealPlanId      String
+  mealPlan        MealPlan @relation(fields: [mealPlanId], references: [id], onDelete: Cascade)
+  dayOfWeek       Int
+  mealType        MealType
+  foodId          String
+  food            Food     @relation(fields: [foodId], references: [id])
+  servingQuantity Float
+}
+
+model Habit {
+  id              String            @id @default(cuid())
+  userId          String
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name            String
+  description     String?
+  targetFrequency Int               @default(1)
+  completions     HabitCompletion[]
+  createdAt       DateTime          @default(now())
+}
+
+model HabitCompletion {
+  id          String   @id @default(cuid())
+  habitId     String
+  habit       Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  completedAt DateTime @default(now())
+}
+
+model WaterLog {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  glasses   Int
+  loggedAt  DateTime @default(now())
+}

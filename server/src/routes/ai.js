@@ -1,0 +1,11 @@
+const express = require('express');
+const authenticate = require('../middleware/auth');
+const { mealSuggestions, weeklyPlan, dailyTip, analyzeMeal, insights } = require('../controllers/ai.controller');
+const router = express.Router();
+router.use(authenticate);
+router.post('/meal-suggestions', mealSuggestions);
+router.post('/weekly-plan', weeklyPlan);
+router.get('/daily-tip', dailyTip);
+router.post('/analyze-meal', analyzeMeal);
+router.get('/insights', insights);
+module.exports = router;

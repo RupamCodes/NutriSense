@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/auth.middleware');
+const ctrl = require('../controllers/habit.controller');
+router.post('/', requireAuth, ctrl.createHabit);
+router.get('/', requireAuth, ctrl.getHabits);
+router.put('/:id', requireAuth, ctrl.updateHabit);
+router.delete('/:id', requireAuth, ctrl.deleteHabit);
+router.post('/:id/log', requireAuth, ctrl.logHabit);
+router.get('/logs', requireAuth, ctrl.getHabitLogs);
+router.get('/streak', requireAuth, ctrl.getStreak);
+module.exports = router;

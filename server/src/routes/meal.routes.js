@@ -1,0 +1,10 @@
+const router = require('express').Router();
+const { requireAuth } = require('../middleware/auth.middleware');
+const ctrl = require('../controllers/meal.controller');
+router.post('/', requireAuth, ctrl.logMeal);
+router.get('/', requireAuth, ctrl.getMeals);
+router.get('/today', requireAuth, ctrl.getTodayMeals);
+router.get('/:id', requireAuth, ctrl.getMealById);
+router.put('/:id', requireAuth, ctrl.updateMeal);
+router.delete('/:id', requireAuth, ctrl.deleteMeal);
+module.exports = router;

@@ -1,0 +1,10 @@
+const express = require('express');
+const authenticate = require('../middleware/auth');
+const { getMacros, getCalories, getNutrients, getTopFoods } = require('../controllers/analytics.controller');
+const router = express.Router();
+router.use(authenticate);
+router.get('/macros', getMacros);
+router.get('/calories', getCalories);
+router.get('/nutrients', getNutrients);
+router.get('/top-foods', getTopFoods);
+module.exports = router;
