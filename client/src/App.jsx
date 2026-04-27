@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import useAuthStore from './stores/authStore';
-import LandingPage from './pages/LandingPage';
-import LoginPage from './pages/LoginPage';
-import SignupPage from './pages/SignupPage';
 import OnboardingPage from './pages/OnboardingPage';
 import DashboardPage from './pages/DashboardPage';
 import LogMealPage from './pages/LogMealPage';
@@ -13,20 +10,15 @@ import MealPlansPage from './pages/MealPlansPage';
 import HabitsPage from './pages/HabitsPage';
 import SettingsPage from './pages/SettingsPage';
 import AppLayout from './components/layout/AppLayout';
+
 function ProtectedRoute({ children }) {
   const { isAuthenticated, isLoading, user } = useAuthStore();
   if (isLoading) return <LoadingScreen />;
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  if (!isAuthenticated) return <Navigate to="/dashboard" replace />;
   if (user && !user.isOnboarded) return <Navigate to="/onboarding" replace />;
   return children;
 }
-function PublicOnlyRoute({ children }) {
-  const { isAuthenticated, isLoading, user } = useAuthStore();
-  if (isLoading) return <LoadingScreen />;
-  if (isAuthenticated && user?.isOnboarded) return <Navigate to="/dashboard" replace />;
-  if (isAuthenticated && !user?.isOnboarded) return <Navigate to="/onboarding" replace />;
-  return children;
-}
+
 function LoadingScreen() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
@@ -37,17 +29,21 @@ function LoadingScreen() {
     </div>
   );
 }
+
 export default function App() {
   const { initialize, isLoading } = useAuthStore();
+
   useEffect(() => {
     initialize();
   }, [initialize]);
+
   if (isLoading) return <LoadingScreen />;
+
   return (
     <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/login" element={<PublicOnlyRoute><LoginPage /></PublicOnlyRoute>} />
-      <Route path="/signup" element={<PublicOnlyRoute><SignupPage /></PublicOnlyRoute>} />
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/login" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/signup" element={<Navigate to="/dashboard" replace />} />
       <Route path="/onboarding" element={<OnboardingPage />} />
       <Route path="/dashboard" element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
         <Route index element={<DashboardPage />} />
@@ -70,7 +66,8 @@ export default function App() {
       <Route path="/settings" element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
         <Route index element={<SettingsPage />} />
       </Route>
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
     </Routes>
   );
 }
+
